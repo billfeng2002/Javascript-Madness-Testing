@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  concert_id: 1
+  name: MyString
+  composer: MyString
+  duration: 1
+
+two:
+  concert_id: 1
+  name: MyString
+  composer: MyString
+  duration: 1

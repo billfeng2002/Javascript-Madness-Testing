@@ -10,11 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_13_070522) do
+ActiveRecord::Schema.define(version: 2021_07_13_072536) do
+
+  create_table "concert_halls", force: :cascade do |t|
+    t.string "location"
+    t.integer "date_built"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "concert_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "concert_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "concerts", force: :cascade do |t|
+    t.integer "orchestra_id"
+    t.integer "concert_hall_id"
+    t.string "name"
+    t.float "price"
+    t.datetime "time"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orchestras", force: :cascade do |t|
+    t.string "name"
+    t.string "conductor"
+    t.integer "year_founded"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "repertoires", force: :cascade do |t|
+    t.integer "concert_id"
+    t.string "name"
+    t.string "composer"
+    t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
