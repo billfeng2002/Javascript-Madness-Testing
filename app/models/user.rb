@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_secure_password
     has_many :concert_users
     has_many :concerts, through: :concert_users
     has_many :orchestras, through: :concerts
