@@ -25,4 +25,12 @@ class User < ApplicationRecord
     def favorite_orchestra
         #
     end
+
+    def sorted_concert_halls
+        
+    end
+
+    def sorted_orchestras
+
+    end
 end

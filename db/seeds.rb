@@ -13,3 +13,10 @@ User.create(
         {first_name: "Joe", last_name:"Mama", username: "joemam", password: "123", email:"whosjoe@yahoo.com", age: "50", address:"1232 Campus Drive"}  
     ]
 )
+Ochestra.destroy_all
+Orchestra.create(
+    [
+
+
+    ]
+)
