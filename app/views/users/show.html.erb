@@ -1,9 +1,11 @@
 <h1> <%=@user.full_name%>'s Profile </h1>
 <%= flash[:success] if flash[:success]%>
 <%= flash[:error] if flash[:error]%>
+
+
+
 <%= form_tag "/logout", method:"post" do %>
 <%= submit_tag "Logout"%>
-
 <% end %>
 
 <%= form_tag "/edit_profile", method:"get" do %>

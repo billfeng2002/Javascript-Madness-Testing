@@ -5,6 +5,9 @@ class User < ApplicationRecord
     has_many :orchestras, through: :concerts
     has_many :concert_halls, through: :concerts
     validate :valid_email
+    validates :username, uniqueness: {message: "is already taken!"}, presence: :true
+    validates :email, uniqueness: {message: "is already taken!"}, presence: :true
+    validates :age, inclusion: {in: 1..150, message:"must be an integer from 1 to 150"}
     def valid_email
         unless(email =~ URI::MailTo::EMAIL_REGEXP)
             errors.add(:email, "must be valid")
@@ -13,5 +16,13 @@ class User < ApplicationRecord
 
     def full_name
         first_name+ " " +last_name
+    end
+
+    def favorite_concert_hall
+        #
+    end
+
+    def favorite_orchestra
+        #
     end
 end

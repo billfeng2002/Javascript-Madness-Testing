@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get '/edit_profile', to: "users#edit"
   post '/edit_profile', to: "users#update"
   get '/create_account', to: "users#new"
+  post '/create_account', to: "users#create"
   post '/logout', to: "sessions#destroy"
 end

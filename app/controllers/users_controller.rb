@@ -12,7 +12,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to "/profile"
     else
-      flash[:error] = "Something went wrong"
       render "new"
     end
   end
