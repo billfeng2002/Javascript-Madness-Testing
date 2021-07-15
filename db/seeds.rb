@@ -13,10 +13,15 @@ User.create(
         {first_name: "Joe", last_name:"Mama", username: "joemam", password: "123", email:"whosjoe@yahoo.com", age: "50", address:"1232 Campus Drive"}  
     ]
 )
-Ochestra.destroy_all
-Orchestra.create(
-    [
 
-
-    ]
-)
+Orchestra.destroy_all
+Orchestra.create(name: "Berliner Philharmoniker", conductor: "Kirill Petrenko", year_founded: 1882, image_url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.berliner-philharmoniker.de%2Fen%2F&psig=AOvVaw1tGASEsjsPjDUFLB3CRkq7&ust=1626452965674000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJDu-My_5fECFQAAAAAdAAAAABAO")
+Orchestra.create(name: "Boston Philharmonic Orchestra", conductor: "Benjamin Zander", year_founded: 1979, image_url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.benjaminzander.org%2Fabout%2Fboston-philharmonic%2F&psig=AOvVaw1in8zHBOcWeCRZlcddjUgA&ust=1626453258953000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJiA0NnA5fECFQAAAAAdAAAAABAD")
+Orchestra.create(name: "Helsinki Philharmonic Orchestra", conductor: "Susanna Mälkki", year_founded: 1882, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Helsinki-Philharmonic-1965.jpg/2560px-Helsinki-Philharmonic-1965.jpg")      
+Orchestra.create(name: "Iceland Symphony Orchestra", conductor: "Eva Ollikainen", year_founded: 1950, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Iceland_Symphony_Orchestra.svg/2560px-Iceland_Symphony_Orchestra.svg.png") 
+Orchestra.create(name: "BBC Philharmonic", conductor: "Omer Meir Wellber", year_founded: 1922, image_url: "https://upload.wikimedia.org/wikipedia/en/d/dd/BBC_Philharmonic_logo.png")   
+        
+    
+        
+        
+    
