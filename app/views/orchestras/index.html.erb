@@ -1,0 +1,7 @@
+<h1>All Orchestras</h1>
+<br>
+<ul>
+    <% @orchestras.each do |orchestra| %>
+        <li>Name: <%= link_to orchestra.name, orchestra_path(orchestra) %> | Conductor: <%= orchestra.conductor %></li>
+    <% end %>
+</ul>
