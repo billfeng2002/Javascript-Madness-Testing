@@ -1,0 +1,18 @@
+<h1>Browse Concerts</h1>
+<%=form_tag "/concerts", :method => "get" do%>
+    <%=label_tag "View Option"%>
+    <%=select_tag 'mode', options_for_select(@view_options, @mode)%>
+    <%=submit_tag "View"%>
+
+<% end %>
+<div id="rectangle" style="width:number px; height:number px; background-color:blue">dfsdf</div>
+<table> 
+    <thead>
+
+
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>
