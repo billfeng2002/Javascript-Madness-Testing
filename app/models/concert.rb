@@ -22,7 +22,7 @@ class Concert < ApplicationRecord
     end
 
     def self.future_concerts
-        self.sorted_by_date.select{|concert| !concert.passed?}
+        self.sorted_by_date.reverse.select{|concert| !concert.passed?}
     end
 
     def self.past_concerts
@@ -30,7 +30,7 @@ class Concert < ApplicationRecord
     end
 
     def self.sorted_by_date
-        self.order(date: :desc)
+        self.order(time: :desc)
     end
 
     def self.sorted_by_recent
@@ -39,5 +39,13 @@ class Concert < ApplicationRecord
 
     def self.sorted_by_popularity
         self.all.sort{|concert| -concert.num_user_interested}
+    end
+
+    def self.sorted_by_price_asc
+        self.order(price: :asc)
+    end
+
+    def self.sorted_by_price_dec
+        self.order(price: :desc)
     end
 end

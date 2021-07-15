@@ -1,27 +1,32 @@
 class ConcertsController < ApplicationController
     def index
         #byebug
-        @view_options=[ ["By Date", "date"], ["Past Concerts", "past"], ["Upcoming Concerts", "future"], ["By Popularity", "popularity"], ["Most Recent", "recent"]]
-        views=["default","popularity","date", "recent", "past", "future"]
+        @query_options=[ ["By Date", "date"], ["By Popularity", "popularity"], ["By Price (inc)", "price_asc"], ["By Price (dec)", "price_dec"], ["Most Recent", "recent"]]
+        queries=@query_options.map{|option| option[1]}
         @mode="date"
-        @mode=params[:mode] if views.include?(params[:mode])
-        @data=[]
+        @mode=params[:mode] if queries.include?(params[:mode])
+
+        @display_options=[ ["Past Concerts", "past"], ["Upcoming Concerts", "future"], ["All Concerts", "all"]]
+        displays=["past", "future", "all"]
+        @displayed="all"
+        @displayed=params[:view] if displays.include?(params[:view])
+
         case @mode
         when "popularity"
             @title="Concerts Sorted by Popularity"
-            @concerts=Concert.sorted_by_popularity
+            @concerts=Concert.sorted_by_popularity(@displayed)
         when "date"
             @title="Concerts Sorted by Date"
-            @concerts=Concert.sorted_by_date
+            @concerts=Concert.sorted_by_date(@displayed)
         when "recent"
             @title="Concerts Sorted by Recency"
-            @concerts=Concert.sorted_by_recent
-        when "past"
-            @title="Past Concerts"
-            @concerts=Concert.past_concerts
-        when "future"
-            @title ="Upcoming Concerts"
-            @concerts=Concert.future_concerts
+            @concerts=Concert.sorted_by_recent(@displayed)
+        when "price_asc"
+            @title="Concerts Sorted by Price (Lowest First)"
+            @concerts=Concert.sorted_by_price_asc(@displayed)
+        when "price_dec"
+            @title="Concerts Sorted by Price (Highest First)"
+            @concerts=Concert.sorted_by_price_dec(@displayed)
         else
             @title = "All Concerts"    
             @concerts=Concert.all
