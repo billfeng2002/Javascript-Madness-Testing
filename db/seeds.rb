@@ -21,7 +21,20 @@ Orchestra.create(name: "Helsinki Philharmonic Orchestra", conductor: "Susanna MÃ
 Orchestra.create(name: "Iceland Symphony Orchestra", conductor: "Eva Ollikainen", year_founded: 1950, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Iceland_Symphony_Orchestra.svg/2560px-Iceland_Symphony_Orchestra.svg.png") 
 Orchestra.create(name: "BBC Philharmonic", conductor: "Omer Meir Wellber", year_founded: 1922, image_url: "https://upload.wikimedia.org/wikipedia/en/d/dd/BBC_Philharmonic_logo.png")   
         
-    
+ConcertHall.destroy_all
+
+10.times do
+    ConcertHall.create(name: Faker::Name.first_name+ " Hall", location: Faker::Nation.capital_city, date_built: rand(1600..2020))
+end
+# ConcertHall.create(
+#     [
+#         {location: "London", date_built:"2000"},
+#         {location: "Paris", date_built:"1823"}
+#     ]
+# )    
         
-        
+Concert.destroy_all
+10.times do
+    Concert.create(orchestra_id: Orchestra.ids.sample, concert_hall_id: ConcertHall.ids.sample, name: Faker::Company.name+"'s Celebration", price: rand(10..200).to_f, time: rand(200).days.ago+100.days, updated_at: Faker::Time.backward(days: 50))
+end
     
