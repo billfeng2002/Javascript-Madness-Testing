@@ -18,6 +18,10 @@ class User < ApplicationRecord
         first_name+ " " +last_name
     end
 
+    def has_concert?(concert)
+        self.concerts.include?(concert)
+    end
+
     def favorite_concert_hall
         #
     end

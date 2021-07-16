@@ -36,12 +36,31 @@ class UsersController < ApplicationController
         flash[:success] = "User was successfully updated"
         redirect_to profile_path
       else
-        render 'edit'
+        redirect_to edit_profile_path
       end
     else
       flash[:error]="Incorrect password."
-      render 'edit'
+      redirect_to edit_profile_path
     end
   end
   
+  def add_concert
+    @concert_user=ConcertUser.new(user: current_user, concert_id: params[:concert_id])
+    if(@concert_user.save)
+      flash[:success]="Concert successfully added!"
+      redirect_to profile_path
+    else
+      
+      flash[:error]="Concert is already added!"
+      redirect_to profile_path
+    end
+
+  end
+
+  def delete_concert
+      @concert_user=ConcertUser.find_by(user:current_user, concert_id: params[:concert_id])
+      @concert_user&.destroy
+      flash[:success]="Concert removed from list."
+      redirect_to profile_path
+  end
 end

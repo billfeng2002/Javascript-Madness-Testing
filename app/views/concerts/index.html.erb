@@ -15,5 +15,18 @@
         <p> Orchestra: <%= link_to concert.orchestra.name, concert.orchestra %>
         <p> Users interested: <%=concert.num_user_interested%></p>
         <p> Last updated <%=concert_date_format(concert)%><p>
+        <% if (@user)%>
+            <% if(@user.has_concert?(concert))%>
+                <%=form_tag '/profile', method: 'post' do%>
+                    <%=hidden_field_tag 'concert_id', concert.id%>
+                    <%=submit_tag "Remove From List"%>
+                <% end %>
+            <% else %>
+                <%=form_tag '/profile', method: 'delete' do%>
+                    <%=hidden_field_tag 'concert_id', concert.id%>
+                    <%=submit_tag "Add To List"%>
+                <% end %>
+            <% end %>
+        <% end %>
     </div>
 <% end %>

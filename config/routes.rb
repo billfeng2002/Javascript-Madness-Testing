@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get '/create_account', to: "users#new"
   post '/create_account', to: "users#create"
   post '/logout', to: "sessions#destroy"
+  post '/profile', to: "users#delete_concert"
+  delete '/profile', to: "users#add_concert"
 end
