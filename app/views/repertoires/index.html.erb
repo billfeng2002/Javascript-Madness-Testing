@@ -1,6 +1,6 @@
 <h1>Today's Repertoires</h1>
 <ul>
-    <% @repertoires.each do |repertoire| %>
+    <% @repertoires&.each do |repertoire| %>
         <li>Name: <%= link_to repertoire.name, repertoire_path(repertoire) %></li>
     <% end %>
 </ul>

@@ -4,7 +4,7 @@ class Concert < ApplicationRecord
     belongs_to :orchestra
     belongs_to :concert_hall
     has_many :repertoires
-
+    
     def format_date
         self.time.strftime("%m/%d/%Y at %I:%M%p")
     end
@@ -22,30 +22,52 @@ class Concert < ApplicationRecord
     end
 
     def self.future_concerts
-        self.sorted_by_date.reverse.select{|concert| !concert.passed?}
+        self.all.select{|concert| !concert.passed?}
     end
 
     def self.past_concerts
-        self.sorted_by_date.select{|concert| concert.passed?}
+        self.all.select{|concert| concert.passed?}
     end
 
-    def self.sorted_by_date
-        self.order(time: :desc)
+    def self.all_concerts
+        self.all
     end
 
-    def self.sorted_by_recent
-        self.order(updated_at: :desc)
+    def self.get_view_list(option)
+        if(option=="all")
+            self.all_concerts
+        elsif(option=="past")
+            self.past_concerts
+        else
+            self.future_concerts
+        end
     end
 
-    def self.sorted_by_popularity
-        self.all.sort{|concert| -concert.num_user_interested}
+    def self.sorted_by_date_asc(option)
+        self.get_view_list(option).sort_by{|concert| concert.time}
     end
 
-    def self.sorted_by_price_asc
-        self.order(price: :asc)
+    def self.sorted_by_date_dec(option)
+        self.get_view_list(option).sort_by{|concert| concert.time}.reverse
     end
 
-    def self.sorted_by_price_dec
-        self.order(price: :desc)
+    def self.sorted_by_recent(option)
+        #self.order(updated_at: :desc)
+        self.get_view_list(option).sort_by{|concert| concert.updated_at}.reverse
+    end
+
+    def self.sorted_by_popularity(option)
+        #self.all.sort{|concert| -concert.num_user_interested}
+        self.get_view_list(option).sort_by{|concert| concert.num_user_interested}.reverse
+    end
+
+    def self.sorted_by_price_asc(option)
+        #self.order(price: :asc)
+        self.get_view_list(option).sort_by{|concert| concert.price}
+    end
+
+    def self.sorted_by_price_dec(option)
+        #self.order(price: :desc)
+        self.get_view_list(option).sort_by{|concert| concert.price}.reverse
     end
 end

@@ -23,7 +23,7 @@ Orchestra.create(name: "BBC Philharmonic", conductor: "Omer Meir Wellber", year_
     
 Repertoire.destroy_all
 20.times do
-Repertoire.create(concert_id: Concert.ids.sample, name: Faker::Music::Opera, composer: Faker::Music::Opera, duration: rand(20..500))
+    Repertoire.create(concert_id: Concert.ids.sample, name: Faker::Music::Opera.mozart, composer: Faker::Music::Opera.name, duration: rand(20..500))
 end  
         
         
