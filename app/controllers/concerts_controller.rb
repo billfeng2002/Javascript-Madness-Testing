@@ -16,22 +16,22 @@ class ConcertsController < ApplicationController
         @title=@display_options.find{|option| option[1]==@displayed}[0]+" "
         case @mode
         when "popularity"
-            @title+="Concerts Sorted by Popularity"
+            @title+="Sorted by Popularity"
             @concerts=Concert.sorted_by_popularity(@displayed)
         when "date_dec"
-            @title+="Concerts Sorted by Date (Descending)"
+            @title+="Sorted by Date (Descending)"
             @concerts=Concert.sorted_by_date_dec(@displayed)
         when "date_asc"
-            @title+="Concerts Sorted by Date (Ascending)"
+            @title+="Sorted by Date (Ascending)"
             @concerts=Concert.sorted_by_date_dec(@displayed)
         when "recent"
-            @title+="Concerts Sorted by Recency"
+            @title+="Sorted by Recency"
             @concerts=Concert.sorted_by_recent(@displayed)
         when "price_asc"
-            @title+="Concerts Sorted by Price (Lowest First)"
+            @title+="Sorted by Price (Lowest First)"
             @concerts=Concert.sorted_by_price_asc(@displayed)
         when "price_dec"
-            @title+="Concerts Sorted by Price (Highest First)"
+            @title+="Sorted by Price (Highest First)"
             @concerts=Concert.sorted_by_price_dec(@displayed)
         else
             @title = "All Concerts"    

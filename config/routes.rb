@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :concert_halls
   resources :repertoires
   resources :orchestras
+  get '/', to: "concerts#index"
   get 'login', to: "sessions#new"
   post 'login', to: "sessions#create"
   get '/profile', to: "users#show"
