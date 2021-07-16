@@ -1,7 +1,8 @@
-<h1>All Orchestras</h1>
-<br>
-<ul>
+<div>
+<h1 class= "w3-animate-opacity">All Orchestras</h1>
+</div>
+<ul class="w3-ul w3-hoverable">
     <% @orchestras&.each do |orchestra| %>
-        <li>Name: <%= link_to orchestra.name, orchestra_path(orchestra) %> | Conductor: <%= orchestra.conductor %></li>
+        <li><%= link_to orchestra.name, orchestra_path(orchestra) %> | Conductor: <%= orchestra.conductor %></li>
     <% end %>
 </ul>

@@ -1,7 +1,18 @@
-<h1><%= @repertoire.name %></h1>
+<div>
+    <h1 class= "w3-animate-opacity"><%= @repertoire.name %></h1>
+</div>
 
-Composer: <%= @repertoire.composer%><br>
-Duration: <%= @repertoire.duration %> minutes
+<div class="w3-container"> 
+  <h4>Composer</h4>
+  <p><%= @repertoire.composer %></p>
+  <hr>
+</div>
+<div class="w3-container"> 
+  <h4>Duration</h4>
+  <p><%= @repertoire.duration %> minutes</p>
+  <hr>
+</div>
+
 
 <br>
 <br>

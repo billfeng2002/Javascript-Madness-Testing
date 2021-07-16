@@ -1,20 +1,45 @@
-<%= image_tag @orchestra.image_url, style: 'height:100%;width:auto;' %>
+<%= image_tag @orchestra.image_url, style: style= "width:100%" %>
+<div>
+<h1 class= "w3-animate-opacity"><%= @orchestra.name %></h1>
+</div>
 <br>
-<h1><%= @orchestra.name %></h1>
 <br>
-Principle Conductor: <%= @orchestra.conductor %><br>
-Founded in: <%= @orchestra.year_founded %><br>
-Concerts:
-<ul>
-    <% @orchestra.concerts&.each do |concert| %>
+<br>
+<div class="w3-container"> 
+  <h4>Principle Conductor</h4>
+  <p><%= @orchestra.conductor %></p>
+ <hr>
+</div>
+<div class="w3-container"> 
+  <h4>History</h4>
+  <p>Founded in <%= @orchestra.year_founded %><br></p>
+ <hr>
+</div>
+
+<div>
+<ul class="w3-ul w3-hoverable">
+    <li><h4>Upcoming Concerts:</h4></li>
+    <% @orchestra.future_concerts&.each do |concert| %>
         <li><%= link_to concert.name, concert_path(concert) %> at <%= link_to concert.concert_hall.name, concert_hall_path(concert.concert_hall) %></li>
     <% end %>
+    <hr>
 </ul>
+</div>
+
+<div>
+<ul class="w3-ul w3-hoverable">
+    <li><h4>Past Concerts:</h4></li>
+    <% @orchestra.past_concerts&.each do |concert| %>
+        <li><%= link_to concert.name, concert_path(concert) %> at <%= link_to concert.concert_hall.name, concert_hall_path(concert.concert_hall) %></li>
+    <% end %>
+    <hr>
+</ul>
+</div>
 
 <br>
 <br>
 <br>
 <br>
 <br>
-<%= link_to "View All Orchestras", orchestras_path %>
+<button class="w3-button w3-round"><%= link_to "View All Orchestras", orchestras_path %></button>
 

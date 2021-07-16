@@ -1,16 +1,23 @@
-<h1><%= @concert_hall.name %></h1>
-location: 
-<br>
-Built in <%= @concert_hall.date_built %>
-<br>
-Past Concerts: 
-<ul>
+<div>
+    <h1 class= "w3-animate-opacity"><%= @concert_hall.name %></h1>
+</div>
+<div class="w3-container"> 
+  <h3>Location</h3>
+  <p><%= @concert_hall.location %></p>
+  <p>Built in <%= @concert_hall.date_built %></p>
+  <hr>
+</div>
+
+ 
+<ul class="w3-ul w3-hoverable">
+    <li><h2>Past Concerts:</h2></li>
     <% @concert_hall.past_concerts&.each do |concert| %>
         <li><%= link_to concert.name, concert_path(concert) %></li>
     <% end %>
 </ul>
-Upcoming Concerts:
-<ul>
+
+<ul class="w3-ul w3-hoverable">
+    <li><h2>Upcoming Concerts:</h2></li>
     <% @concert_hall.future_concerts&.each do |concert| %>
         <li><%= link_to concert.name, concert_path(concert) %></li>
     <% end %>
@@ -20,4 +27,4 @@ Upcoming Concerts:
 <br>
 <br>
 <br>
-<%= link_to "View All Concert Halls", concert_halls_path %>
+<button class="w3-button w3-round"><%= link_to "View All Concert Halls", concert_halls_path %></button>

@@ -1,12 +1,44 @@
-<%= image_tag "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.laphil.com%2F&psig=AOvVaw1dSTBM3Tb_BTo9GKVBVww2&ust=1626503371682000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOCQ17H75vECFQAAAAAdAAAAABAD", style: 'height:100%;width:auto;' %>
-<br>
-<h1><%= @concert.name %></h1>
-Orchestra: <%= link_to @concert.orchestra, orchestra_path(@concert.orchestra) %><br>
-Repertoires: <%= link_to "Today's Repertoires", repertoires_path %>
-Music Type: <%= @concert.music_type %><br>
-Concert Hall: <%= link_to @concert.concert_hall, concert_hall_path(@concert.concert_hall) %><br>
-Date: <%= @concert.format_date %><br>
-Ticket Price: <%= @concert.format_price %>
+<%= image_tag "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.laphil.com%2F&psig=AOvVaw1dSTBM3Tb_BTo9GKVBVww2&ust=1626503371682000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOCQ17H75vECFQAAAAAdAAAAABAD", style= "width:100%" %>
+<div>
+    <h1 class= "w3-animate-opacity" ><%= @concert.name %></h1>
+</div>
+
+<div class="w3-container"> 
+  <h4>Orchestra</h4>
+  <p><%= link_to @concert.orchestra, orchestra_path(@concert.orchestra) %></p>
+  <hr>
+</div>
+
+<div class="w3-container"> 
+  <h4>Repertoires</h4>
+  <p><%= link_to "All Repertoires", repertoires_path %></p>
+  <hr>
+</div>
+
+<div class="w3-container"> 
+  <h4>Music Type</h4>
+  <p><%= @concert.music_type %></p>
+  <hr>
+</div>
+
+<div class="w3-container"> 
+  <h4>Concert Hall</h4>
+  <p><%= link_to @concert.concert_hall, concert_hall_path(@concert.concert_hall) %></p>
+  <hr>
+</div>
+
+<div class="w3-container"> 
+  <h4>Date</h4>
+  <p><%= @concert.format_date %></p>
+  <hr>
+</div>
+
+<div class="w3-container"> 
+  <h4>Ticket Price</h4>
+  <p><%= @concert.format_price %></p>
+  <hr>
+</div>
+
 <br>
 <br>
 <br>

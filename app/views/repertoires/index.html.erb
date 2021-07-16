@@ -1,6 +1,8 @@
-<h1>Today's Repertoires</h1>
-<ul>
+<div>
+<h1 class= "w3-animate-opacity">Repertoires</h1>
+</div>
+<ul class="w3-ul w3-hoverable">
     <% @repertoires&.each do |repertoire| %>
-        <li>Name: <%= link_to repertoire.name, repertoire_path(repertoire) %></li>
+        <li><%= link_to repertoire.name, repertoire_path(repertoire) %></li>
     <% end %>
 </ul>
