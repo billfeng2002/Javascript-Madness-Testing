@@ -15,7 +15,7 @@ User.create(
 )
 
 Orchestra.destroy_all
-Orchestra.create(name: "Berliner Philharmoniker", conductor: "Kirill Petrenko", year_founded: 1882, image_url: "https://en.wikipedia.org/wiki/File:Logo_Berliner_Philharmoniker.svg")
+Orchestra.create(name: "Berliner Philharmoniker", conductor: "Kirill Petrenko", year_founded: 1882, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_Berliner_Philharmoniker.svg/594px-Logo_Berliner_Philharmoniker.svg.png")
 Orchestra.create(name: "Boston Philharmonic Orchestra", conductor: "Benjamin Zander", year_founded: 1979, image_url: "https://www.benjaminzander.org/wp-content/uploads/2018/01/1_DSC1048-copy.jpg")
 Orchestra.create(name: "Helsinki Philharmonic Orchestra", conductor: "Susanna Mälkki", year_founded: 1882, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Helsinki-Philharmonic-1965.jpg/2560px-Helsinki-Philharmonic-1965.jpg")      
 Orchestra.create(name: "Iceland Symphony Orchestra", conductor: "Eva Ollikainen", year_founded: 1950, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Iceland_Symphony_Orchestra.svg/2560px-Iceland_Symphony_Orchestra.svg.png") 

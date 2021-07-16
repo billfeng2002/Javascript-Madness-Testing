@@ -5,9 +5,12 @@
     <%=select_tag 'view', options_for_select(@display_options, @displayed), :onchange => "this.form.submit();"%>
 
 <% end %>
-<h2> <%=@title%> </h2>
+<div class="title-container" >
+    <h2 style="text-align:center"> <%=@title%> </h2>
+</div>
+<div class="concerts-container" style="margin:auto;">
 <%@concerts&.each do |concert|%>
-    <div class="w3-card w3-hover-shadow">
+    <div class="w3-card w3-hover-shadow", style="max-width:600px;margin:auto;">
         <header class="w3-container w3-blue">
             <br>
             <h3> <%=concert.name%></h3>
@@ -40,3 +43,4 @@
     </div>
     <br>
 <% end %>
+</div>

@@ -35,8 +35,13 @@
     </div>
     <div class="w3-container">
         <br>
+        <%if(@user.favorite_concert_hall)%>
         <p> <strong>Favorite Concert Hall:</strong> <%= link_to @user.favorite_concert_hall[0].name, @user.favorite_concert_hall[0]%><%=" - #{@user.favorite_concert_hall[1]} times"%></p>
+        <% end %>
+        <%if(@user.favorite_orchestra)%>
         <p> <strong>Favorite Orchestra:</strong> <%= link_to @user.favorite_orchestra[0].name, @user.favorite_orchestra[0]%><%=" - #{@user.favorite_orchestra[1]} times"%></p>
+        <% end %>
+        
         <p> <strong>Number of Concerts Added:</strong> <%=@user.concerts.count%> Concerts </p>
     </div>
 </div>
@@ -115,7 +120,7 @@
 </div>
 <br>
 <%= form_tag "/signout", method:"delete" do %>
-<%= submit_tag "Logout"%>
+<%= submit_tag "Logout", class:"w3-button w3-red"%>
 <% end %>
 
-
+<br>
