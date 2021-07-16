@@ -5,8 +5,8 @@ Orchestra: <%= link_to @concert.orchestra, orchestra_path(@concert.orchestra) %>
 Repertoires: <%= link_to "Today's Repertoires", repertoires_path %>
 Music Type: <%= @concert.music_type %><br>
 Concert Hall: <%= link_to @concert.concert_hall, concert_hall_path(@concert.concert_hall) %><br>
-Date: <%= @concert.time %><br>
-Ticket Price: <%= @concert.price %>
+Date: <%= @concert.format_date %><br>
+Ticket Price: <%= @concert.format_price %>
 <br>
 <br>
 <br>
