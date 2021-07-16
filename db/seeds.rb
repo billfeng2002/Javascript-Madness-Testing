@@ -20,7 +20,15 @@ Orchestra.create(name: "Boston Philharmonic Orchestra", conductor: "Benjamin Zan
 Orchestra.create(name: "Helsinki Philharmonic Orchestra", conductor: "Susanna Mälkki", year_founded: 1882, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Helsinki-Philharmonic-1965.jpg/2560px-Helsinki-Philharmonic-1965.jpg")      
 Orchestra.create(name: "Iceland Symphony Orchestra", conductor: "Eva Ollikainen", year_founded: 1950, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Iceland_Symphony_Orchestra.svg/2560px-Iceland_Symphony_Orchestra.svg.png") 
 Orchestra.create(name: "BBC Philharmonic", conductor: "Omer Meir Wellber", year_founded: 1922, image_url: "https://upload.wikimedia.org/wikipedia/en/d/dd/BBC_Philharmonic_logo.png")   
-        
+    
+Repertoire.destroy_all
+Orchestra.create(
+    [
+        {
+            
+        }
+    ]
+)
     
         
         
