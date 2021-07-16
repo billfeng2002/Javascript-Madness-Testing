@@ -6,8 +6,15 @@ Principle Conductor: <%= @orchestra.conductor %><br>
 Founded in: <%= @orchestra.year_founded %><br>
 Concerts:
 <ul>
-    <% @orchestra.concerts.each do |concert| %>
+    <% @orchestra.concerts&.each do |concert| %>
         <li><%= link_to concert.name, concert_path(concert) %> at <%= link_to concert.concert_hall.name, concert_hall_path(concert.concert_hall) %></li>
     <% end %>
 </ul>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= link_to "View All Orchestras", orchestras_path %>
 
