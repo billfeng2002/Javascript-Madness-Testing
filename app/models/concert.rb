@@ -9,6 +9,10 @@ class Concert < ApplicationRecord
         self.time.strftime("%m/%d/%Y at %I:%M%p")
     end
 
+    def format_date_only
+        self.time.strftime("%m/%d/%Y")
+    end
+
     def format_price
         "$#{"%.2f" % self.price}"
     end

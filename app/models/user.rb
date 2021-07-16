@@ -23,18 +23,18 @@ class User < ApplicationRecord
     end
 
     def favorite_concert_hall
-        #
+        self.sorted_concert_halls&.first
     end
 
     def favorite_orchestra
-        #
+        self.sorted_orchestras&.first
     end
 
     def sorted_concert_halls
-        
+        self.concerts&.group(:concert_hall).count.to_a.sort_by{|concert_pair| concert_pair[1]}.reverse
     end
 
     def sorted_orchestras
-
+        self.concerts&.group(:orchestra).count.to_a.sort_by{|concert_pair| concert_pair[1]}.reverse
     end
 end

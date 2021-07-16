@@ -1,6 +1,79 @@
 <h1> <%=@user.full_name%>'s Profile </h1>
 <%= flash[:success] if flash[:success]%>
 <%= flash[:error] if flash[:error]%>
+<h2> My Info</h2>
+<p> Name: <%=@user.full_name%></p>
+<p> Username: <%=@user.username%></p>
+<p> Email: <%=@user.email%></p>
+<p> Age: <%=@user.age%></p>
+<p> Address: <%=@user.address%></p>
+<%= form_tag "/edit_profile", method:"get" do %>
+<%= submit_tag "Edit Info"%>
+<% end %>
+
+<h2> My Stats</h2>
+<p> Favorite Concert Hall: <%= link_to @user.favorite_concert_hall[0].name, @user.favorite_concert_hall[0]%><%=" - #{@user.favorite_concert_hall[1]} times"%></p>
+<p> Favorite Orchestra: <%= link_to @user.favorite_orchestra[0].name, @user.favorite_orchestra[0]%><%=" - #{@user.favorite_orchestra[1]} times"%></p>
+<p> Number of Concerts Added: <%=@user.concerts.count%> Concerts </p>
+
+<h2> My Concerts </h2>
+
+<table>
+    <thead>
+        <tr>
+            <th> Concert Name </th>
+            <th> Orchestra </th>
+            <th> Concert Hall </th>
+            <th> Price </th>
+            <th> Date </th>
+            <th> Remove? </th>
+
+        <tr>
+    </thead>
+
+    <tbody>
+        <% @user.concerts&.each do |concert|%>
+            <tr>
+                <td> <%=concert.name%> </td>
+                <td> <%=concert.orchestra.name%></td>
+                <td> <%=concert.concert_hall.name%></td>
+                <td> <%=concert.format_price%></td>
+                <td> <%=concert.format_date_only%></td>
+                <td> 
+                    <%=form_tag '/profile', method: 'post' do%>
+                    <%=hidden_field_tag 'concert_id', concert.id%>
+                    <%=submit_tag "Remove"%>
+                <% end %>
+                </td>                                
+            </tr>
+        <% end %>
+    </tbody>
+
+</table>
+
+<%= form_tag "/concerts", method:"get" do %>
+<%= submit_tag "Find More Concerts"%>
+<% end %>
+
+<h2> My Orchestras</h2>
+
+<ul>
+<% @user.sorted_orchestras&.each do |orchestra_pair|%>
+    <%orchestra=orchestra_pair[0];count=orchestra_pair[1]%>
+    <li> <%=link_to orchestra.name, orchestra%><%=" - #{count} times"%> </li>
+<% end %>
+</ul>
+
+<h2> My Concert Halls </h2>
+<ul>
+<% @user.sorted_concert_halls&.each do |hall_pair|%>
+    <%hall=hall_pair[0];count=hall_pair[1]%>
+    <li> <%=link_to hall.name, hall%><%=" - #{count} times"%> </li>
+<% end %>
+</ul>
+
+
+
 
 
 
@@ -8,6 +81,4 @@
 <%= submit_tag "Logout"%>
 <% end %>
 
-<%= form_tag "/edit_profile", method:"get" do %>
-<%= submit_tag "Edit Profile"%>
-<% end %>
+
