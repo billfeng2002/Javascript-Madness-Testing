@@ -9,19 +9,19 @@
 </div>
 
  
-<ul class="w3-ul w3-hoverable">
-    <li><h2>Past Concerts:</h2></li>
+<div class="w3-ul w3-hoverable">
+    <li><h3>Past Concerts:</h3></li>
     <% @concert_hall.past_concerts&.each do |concert| %>
         <li><%= link_to concert.name, concert_path(concert) %></li>
     <% end %>
-</ul>
+</div>
 
-<ul class="w3-ul w3-hoverable">
-    <li><h2>Upcoming Concerts:</h2></li>
+<div class="w3-ul w3-hoverable">
+    <li><h3>Upcoming Concerts:</h3></li>
     <% @concert_hall.future_concerts&.each do |concert| %>
         <li><%= link_to concert.name, concert_path(concert) %></li>
     <% end %>
-</ul>
+</div>
 <br>
 <br>
 <br>
