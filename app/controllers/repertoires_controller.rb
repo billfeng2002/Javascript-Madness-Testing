@@ -1,6 +1,6 @@
 class RepertoiresController < ApplicationController
     
-    def def index
+    def index
        
         @repertoires = Repertoire.all
         
