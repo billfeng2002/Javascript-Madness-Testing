@@ -1,0 +1,16 @@
+<h1><%= @repertoire.name %></h1>
+
+Composer: <%= @repertoire.composer%><br>
+Duration: <%= @repertoire.duration %> minutes
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<%= link_to "See All Repertoires", repertoires_path %>
+<br>
+<br>
+<%= link_to "Go To Concert Page", concert_path(@repertoire.concert) %>
