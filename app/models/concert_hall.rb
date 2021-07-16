@@ -10,4 +10,13 @@ class ConcertHall < ApplicationRecord
     def future_concerts
         Concert.future_concerts.select{|concert| concert.concert_hall == self}
     end
+
+    def self.sorted_by_name
+        self.all.sort_by{|hall| hall.name}
+    end
+
+    def self.sorted_by_city
+        self.all.sort_by{|hall| hall.location}
+    end
+
 end

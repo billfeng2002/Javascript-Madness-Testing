@@ -9,7 +9,7 @@ Past Concerts:
         <li><%= link_to concert.name, concert_path(concert) %></li>
     <% end %>
 </ul>
-Future Concerts:
+Upcoming Concerts:
 <ul>
     <% @concert_hall.future_concerts&.each do |concert| %>
         <li><%= link_to concert.name, concert_path(concert) %></li>
