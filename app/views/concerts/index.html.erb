@@ -1,0 +1,19 @@
+<h1>Browse Concerts</h1>
+<%=form_tag "/concerts", :method => "get" do%>
+    <%=label_tag "View Option"%>
+    <%=select_tag 'mode', options_for_select(@query_options, @mode), :onchange => "this.form.submit();"%>
+    <%=select_tag 'view', options_for_select(@display_options, @displayed), :onchange => "this.form.submit();"%>
+
+<% end %>
+<h2> <%=@title%> </h2>
+<%@concerts&.each do |concert|%>
+    <div class="concertDisplay">
+        <h3> <%=concert.name%></h3>
+        <p> Time: <%=concert.format_date%><p>
+        <p> Price: <%=concert.format_price%></p>
+        <p> Location: <%=link_to concert.concert_hall.name+" | "+concert.concert_hall.location, concert.concert_hall%></p>
+        <p> Orchestra: <%= link_to concert.orchestra.name, concert.orchestra %>
+        <p> Users interested: <%=concert.num_user_interested%></p>
+        <p> Last updated <%=concert_date_format(concert)%><p>
+    </div>
+<% end %>

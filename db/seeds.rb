@@ -32,4 +32,8 @@ Orchestra.create(
     
         
         
+Concert.destroy_all
+10.times do
+    Concert.create(orchestra_id: Orchestra.ids.sample, concert_hall_id: ConcertHall.ids.sample, name: Faker::Company.name+"'s Celebration", price: rand(10..200).to_f, time: rand(200).days.ago+100.days, updated_at: Faker::Time.backward(days: 50))
+end
     
