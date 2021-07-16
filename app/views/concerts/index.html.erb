@@ -7,14 +7,21 @@
 <% end %>
 <h2> <%=@title%> </h2>
 <%@concerts&.each do |concert|%>
-    <div class="concertDisplay">
-        <h3> <%=concert.name%></h3>
-        <p> Time: <%=concert.format_date%><p>
-        <p> Price: <%=concert.format_price%></p>
-        <p> Location: <%=link_to concert.concert_hall.name+" | "+concert.concert_hall.location, concert.concert_hall%></p>
-        <p> Orchestra: <%= link_to concert.orchestra.name, concert.orchestra %>
-        <p> Users interested: <%=concert.num_user_interested%></p>
-        <p> Last updated <%=concert_date_format(concert)%><p>
+    <div class="w3-card w3-hover-shadow">
+        <header class="w3-container w3-blue">
+            <br>
+            <h3> <%=concert.name%></h3>
+            <br>
+        </header>
+        <div class="w3-container">
+            <br>
+            <p> <b>Time:</b> <%=concert.format_date%><p>
+            <p> <b>Price:</b> <%=concert.format_price%></p>
+            <p> <b>Location:</b> <%=link_to concert.concert_hall.name+" | "+concert.concert_hall.location, concert.concert_hall%></p>
+            <p> <b>Orchestra:</b> <%= link_to concert.orchestra.name, concert.orchestra %>
+            <p> <b>Users interested:</b> <%=concert.num_user_interested%></p>
+            <p> <b>Last updated</b> <%=concert_date_format(concert)%><p>
+        
         <% if (@user)%>
             <% if(@user.has_concert?(concert))%>
                 <%=form_tag '/profile', method: 'post' do%>
@@ -28,5 +35,8 @@
                 <% end %>
             <% end %>
         <% end %>
+        </div>
+        <br>
     </div>
+    <br>
 <% end %>

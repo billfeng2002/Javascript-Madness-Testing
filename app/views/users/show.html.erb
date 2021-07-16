@@ -1,82 +1,110 @@
 <h1> <%=@user.full_name%>'s Profile </h1>
 <%= flash[:success] if flash[:success]%>
 <%= flash[:error] if flash[:error]%>
-<h2> My Info</h2>
-<p> Name: <%=@user.full_name%></p>
-<p> Username: <%=@user.username%></p>
-<p> Email: <%=@user.email%></p>
-<p> Age: <%=@user.age%></p>
-<p> Address: <%=@user.address%></p>
-<%= form_tag "/edit_profile", method:"get" do %>
-<%= submit_tag "Edit Info"%>
-<% end %>
+<div class="w3-border">
+    <div class="w3-container w3-blue">
+        <h2> My Info</h2>
+    </div>
+    <div class="w3-container">
+        <br>
+        <p> <strong>Name:</strong> <%=@user.full_name%></p>
+        <p> <strong>Username:</strong> <%=@user.username%></p>
+        <p> <strong>Email:</strong> <%=@user.email%></p>
+        <p> <strong>Age:</strong> <%=@user.age%></p>
+        <p> <strong>Address:</strong> <%=@user.address%></p>
+        <%= form_tag "/edit_profile", method:"get" do %>
+        <%= submit_tag "Edit Info"%>
+        <% end%>
+        <br>
+    </div>
+</div>
 
-<h2> My Stats</h2>
-<p> Favorite Concert Hall: <%= link_to @user.favorite_concert_hall[0].name, @user.favorite_concert_hall[0]%><%=" - #{@user.favorite_concert_hall[1]} times"%></p>
-<p> Favorite Orchestra: <%= link_to @user.favorite_orchestra[0].name, @user.favorite_orchestra[0]%><%=" - #{@user.favorite_orchestra[1]} times"%></p>
-<p> Number of Concerts Added: <%=@user.concerts.count%> Concerts </p>
+<br>
+<div class="w3-border">
+    <div class="w3-container w3-blue">
+        <h2> My Stats</h2>
+    </div>
+    <div class="w3-container">
+        <br>
+        <p> <strong>Favorite Concert Hall:</strong> <%= link_to @user.favorite_concert_hall[0].name, @user.favorite_concert_hall[0]%><%=" - #{@user.favorite_concert_hall[1]} times"%></p>
+        <p> <strong>Favorite Orchestra:</strong> <%= link_to @user.favorite_orchestra[0].name, @user.favorite_orchestra[0]%><%=" - #{@user.favorite_orchestra[1]} times"%></p>
+        <p> <strong>Number of Concerts Added:</strong> <%=@user.concerts.count%> Concerts </p>
+    </div>
+</div>
+<br>
+<div class="w3-border">
+    <div class="w3-container w3-blue">
+        <h2> My Concerts </h2>
+    </div>
+    <div class="w3-container">
+        <br>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th> Concert Name </th>
+                    <th> Orchestra </th>
+                    <th> Concert Hall </th>
+                    <th> Price </th>
+                    <th> Date </th>
+                    <th> Remove? </th>
 
-<h2> My Concerts </h2>
+                <tr>
+            </thead>
 
-<table class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th> Concert Name </th>
-            <th> Orchestra </th>
-            <th> Concert Hall </th>
-            <th> Price </th>
-            <th> Date </th>
-            <th> Remove? </th>
-
-        <tr>
-    </thead>
-
-    <tbody>
-        <% @user.concerts&.each do |concert|%>
-            <tr>
-                <td> <%=link_to concert.name, concert%> </td>
-                <td> <%=link_to concert.orchestra.name, concert.orchestra%></td>
-                <td> <%=link_to concert.concert_hall.name, concert.concert_hall%></td>
-                <td> <%=concert.format_price%></td>
-                <td> <%=concert.format_date_only%></td>
-                <td> 
-                    <%=form_tag '/profile', method: 'post' do%>
-                    <%=hidden_field_tag 'concert_id', concert.id%>
-                    <%=submit_tag "Remove"%>
+            <tbody>
+                <% @user.concerts&.each do |concert|%>
+                    <tr>
+                        <td> <%=link_to concert.name, concert%> </td>
+                        <td> <%=link_to concert.orchestra.name, concert.orchestra%></td>
+                        <td> <%=link_to concert.concert_hall.name, concert.concert_hall%></td>
+                        <td> <%=concert.format_price%></td>
+                        <td> <%=concert.format_date_only%></td>
+                        <td> 
+                            <%=form_tag '/profile', method: 'post' do%>
+                            <%=hidden_field_tag 'concert_id', concert.id%>
+                            <%=submit_tag "Remove"%>
+                        <% end %>
+                        </td>                                
+                    </tr>
                 <% end %>
-                </td>                                
-            </tr>
+            </tbody>
+
+        </table>
+
+        <%= form_tag "/concerts", method:"get" do %>
+        <%= submit_tag "Find More Concerts"%>
         <% end %>
-    </tbody>
-
-</table>
-
-<%= form_tag "/concerts", method:"get" do %>
-<%= submit_tag "Find More Concerts"%>
-<% end %>
-
-<h2> My Orchestras</h2>
-
-<ul>
-<% @user.sorted_orchestras&.each do |orchestra_pair|%>
-    <%orchestra=orchestra_pair[0];count=orchestra_pair[1]%>
-    <li> <%=link_to orchestra.name, orchestra%><%=" - #{count} times"%> </li>
-<% end %>
-</ul>
-
-<h2> My Concert Halls </h2>
-<ul>
-<% @user.sorted_concert_halls&.each do |hall_pair|%>
-    <%hall=hall_pair[0];count=hall_pair[1]%>
-    <li> <%=link_to hall.name, hall%><%=" - #{count} times"%> </li>
-<% end %>
-</ul>
-
-
-
-
-
-
+        <br>
+        </div>
+</div>
+<br>
+<div class="w3-border">
+    <div class="w3-container w3-blue">
+        <h2> My Orchestras</h2>
+    </div>
+    <div class="w3-container">
+        <br>
+        <% @user.sorted_orchestras&.each do |orchestra_pair|%>
+            <%orchestra=orchestra_pair[0];count=orchestra_pair[1]%>
+            <p> <%=link_to orchestra.name, orchestra%><%=" - #{count} times"%> </p>
+        <% end %>
+        <br>
+    </div>
+</div>
+<br>
+<div class="w3-border">
+    <div class="w3-container w3-blue">
+        <h2> My Concert Halls </h2>
+    </div>
+    <div class="w3-container">
+        <br>
+        <% @user.sorted_concert_halls&.each do |hall_pair|%>
+            <%hall=hall_pair[0];count=hall_pair[1]%>
+            <p> <%=link_to hall.name, hall%><%=" - #{count} times"%> </p>
+        <% end %>
+    </div>
+</div>
+<br>
 <%= form_tag "/signout", method:"delete" do %>
 <%= submit_tag "Logout"%>
 <% end %>
