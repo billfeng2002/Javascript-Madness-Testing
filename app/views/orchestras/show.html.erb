@@ -1,7 +1,13 @@
-<%= image_tag @orchestra.image_url %>
+<%= image_tag @orchestra.image_url, style: 'height:100%;width:auto;' %>
 <br>
 <h1><%= @orchestra.name %></h1>
 <br>
 Principle Conductor: <%= @orchestra.conductor %><br>
-Founded in: <%= @orchestra.year_founded %>
+Founded in: <%= @orchestra.year_founded %><br>
+Concerts:
+<ul>
+    <% @orchestra.concerts.each do |concert| %>
+        <li><%= link_to concert.name, concert_path(concert) %> at <%= link_to concert.concert_hall.name, concert_hall_path(concert.concert_hall) %></li>
+    <% end %>
+</ul>
 
