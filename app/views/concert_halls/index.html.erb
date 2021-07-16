@@ -3,6 +3,6 @@
 </div>
 <ul class="w3-ul w3-hoverable">
     <% @concert_halls.sorted_by_name&.each do |hall| %>
-        <li><%= link_to concert_hall.name, concert_hall_path(concert_hall) %> | Location: <%= concert_hall.location %></li>
+        <li><%= link_to hall.name, concert_hall_path(hall) %> | Location: <%= hall.location %></li>
     <% end %>
 </ul>
