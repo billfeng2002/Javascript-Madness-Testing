@@ -22,14 +22,9 @@ Orchestra.create(name: "Iceland Symphony Orchestra", conductor: "Eva Ollikainen"
 Orchestra.create(name: "BBC Philharmonic", conductor: "Omer Meir Wellber", year_founded: 1922, image_url: "https://upload.wikimedia.org/wikipedia/en/d/dd/BBC_Philharmonic_logo.png")   
     
 Repertoire.destroy_all
-Orchestra.create(
-    [
-        {
-            
-        }
-    ]
-)
-    
+20.times do
+Repertoire.create(concert_id: Concert.ids.sample, name: Faker::Music::Opera, composer: Faker::Music::Opera, duration: rand(20..500))
+end  
         
         
 Concert.destroy_all
