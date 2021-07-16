@@ -3,7 +3,7 @@ class ConcertsController < ApplicationController
         #byebug
         @query_options=[ ["By Date (dec)", "date_dec"], ["By Date (asc)", "date_asc"], ["By Popularity", "popularity"], ["By Price (inc)", "price_asc"], ["By Price (dec)", "price_dec"], ["Most Recent", "recent"]]
         queries=@query_options.map{|option| option[1]}
-        @mode="date"
+        @mode="date_dec"
         @mode=params[:mode] if queries.include?(params[:mode])
 
         @display_options=[ ["Past Concerts", "past"], ["Upcoming Concerts", "future"], ["All Concerts", "all"]]

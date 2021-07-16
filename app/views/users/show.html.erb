@@ -1,6 +1,15 @@
 <h1> <%=@user.full_name%>'s Profile </h1>
-<%= flash[:success] if flash[:success]%>
-<%= flash[:error] if flash[:error]%>
+<%if (flash[:success])%>
+    <div class="w3-panel w3-green w3-round">
+        <%= flash[:success]%>
+    </div>
+<% end %>
+<%if flash[:error]%>
+    <div class="w3-panel w3-red">
+        <%= flash[:error]%>
+    </div>
+<% end %>
+
 <div class="w3-border">
     <div class="w3-container w3-blue">
         <h2> My Info</h2>
@@ -13,7 +22,7 @@
         <p> <strong>Age:</strong> <%=@user.age%></p>
         <p> <strong>Address:</strong> <%=@user.address%></p>
         <%= form_tag "/edit_profile", method:"get" do %>
-        <%= submit_tag "Edit Info"%>
+        <%= submit_tag "Edit Info", class: "w3-button w3-blue"%>
         <% end%>
         <br>
     </div>
@@ -62,7 +71,7 @@
                         <td> 
                             <%=form_tag '/profile', method: 'post' do%>
                             <%=hidden_field_tag 'concert_id', concert.id%>
-                            <%=submit_tag "Remove"%>
+                            <%=submit_tag "Remove", class: "w3-button w3-red"%>
                         <% end %>
                         </td>                                
                     </tr>
@@ -72,7 +81,7 @@
         </table>
 
         <%= form_tag "/concerts", method:"get" do %>
-        <%= submit_tag "Find More Concerts"%>
+        <%= submit_tag "Find More Concerts", class: "w3-button w3-blue"%>
         <% end %>
         <br>
         </div>

@@ -26,12 +26,12 @@
             <% if(@user.has_concert?(concert))%>
                 <%=form_tag '/profile', method: 'post' do%>
                     <%=hidden_field_tag 'concert_id', concert.id%>
-                    <%=submit_tag "Remove From List"%>
+                    <%=submit_tag "Remove From List", class: "w3-button w3-red"%>
                 <% end %>
             <% else %>
                 <%=form_tag '/profile', method: 'delete' do%>
                     <%=hidden_field_tag 'concert_id', concert.id%>
-                    <%=submit_tag "Add To List"%>
+                    <%=submit_tag "Add To List", class: "w3-button w3-green"%>
                 <% end %>
             <% end %>
         <% end %>
