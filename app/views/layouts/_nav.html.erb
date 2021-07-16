@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #0ebbeb;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Concearch</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        
+        <li class="nav-item">
+          <%= link_to "Concerts", concerts_path, class: "nav-link active" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Orchestras", orchestras_path, class: "nav-link active" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Concert Halls", concert_halls_path, class: "nav-link active" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Repertoires", repertoires_path, class: "nav-link active" %>
+        </li>
+
+        <% if signed_in? %>
+          <li class="nav-item">
+            <%= link_to "My Profile", profile_path, class: "nav-link active" %>
+          </li>
+          <span class="navbar-text">
+              <%="   Logged in as #{@user.full_name}"%>
+          </span>
+          <li class="nav-item">
+            <%= button_to "Log Out", signout_path, :method => :delete , class:"btn"%>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Create Account", create_account_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log In", login_path, class: "nav-link active" %>
+          </li>
+        <% end %>
+      </ul>
+      
+    </div>
+  </div>
+</nav>

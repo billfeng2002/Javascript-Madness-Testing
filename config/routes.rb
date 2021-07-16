@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post '/edit_profile', to: "users#update"
   get '/create_account', to: "users#new"
   post '/create_account', to: "users#create"
-  post '/logout', to: "sessions#destroy"
+  delete '/signout', to: "sessions#destroy"
   post '/profile', to: "users#delete_concert"
   delete '/profile', to: "users#add_concert"
 end

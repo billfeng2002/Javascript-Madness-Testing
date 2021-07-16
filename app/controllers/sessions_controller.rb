@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        #byebug
         session.delete(:user_id)
         flash[:success]="Account successfully logged out."
         redirect_to "/login"
