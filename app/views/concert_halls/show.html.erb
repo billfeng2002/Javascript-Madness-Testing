@@ -1,0 +1,23 @@
+<h1><%= @concert_hall.name %></h1>
+location: 
+<br>
+Built in <%= @concert_hall.date_built %>
+<br>
+Past Concerts: 
+<ul>
+    <% @concert_hall.past_concerts&.each do |concert| %>
+        <li><%= link_to concert.name, concert_path(concert) %></li>
+    <% end %>
+</ul>
+Upcoming Concerts:
+<ul>
+    <% @concert_hall.future_concerts&.each do |concert| %>
+        <li><%= link_to concert.name, concert_path(concert) %></li>
+    <% end %>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= link_to "View All Concert Halls", concert_halls_path %>

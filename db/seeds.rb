@@ -25,6 +25,8 @@ Repertoire.destroy_all
 20.times do
     Repertoire.create(concert_id: Concert.ids.sample, name: Faker::Music::Opera.mozart, composer: Faker::Music::Opera.name, duration: rand(20..500))
 end  
+
+Repertoire.create(concert_id: 25, name: "En Saga", composer: "Sibelius", duration: 20)
         
         
 Concert.destroy_all
