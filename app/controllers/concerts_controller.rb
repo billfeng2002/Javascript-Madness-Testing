@@ -23,7 +23,7 @@ class ConcertsController < ApplicationController
             @concerts=Concert.sorted_by_date_dec(@displayed)
         when "date_asc"
             @title+="Sorted by Date (Ascending)"
-            @concerts=Concert.sorted_by_date_dec(@displayed)
+            @concerts=Concert.sorted_by_date_asc(@displayed)
         when "recent"
             @title+="Sorted by Recency"
             @concerts=Concert.sorted_by_recent(@displayed)
