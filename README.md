@@ -1,24 +1,35 @@
-# README
+# Concearch
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+Concearch was designed as an browsing and organizational tool for keeping track of concerts. Users have the ability to look for concerts they are interested in and add those to their list. The website also supports viewing orchestra, repertoire, and concert hall details.
 
-* Ruby version
+## Setup
 
-* System dependencies
+1. Ensure that all gems and dependencies are installed by running ``bundle install``
 
-* Configuration
+2. Ensure migrations are complete with ``rails db:migrate``
 
-* Database creation
+3. Seed the data with ``rails db:seed`` if you want pre-set data.
 
-* Database initialization
+4. Run ``rails s`` to start the server.
 
-* How to run the test suite
+5. View the website on ``localhost:3000/`` in your browser
 
-* Services (job queues, cache servers, search engines, etc.)
+## Codewise
 
-* Deployment instructions
+* User authentication is done through the `bcrypt` gem
 
-* ...
+* Activerecord is used to manage database data
+
+* Styling was done using the Bootstrap and W3CSS architectures
+
+* Ruby on Rails MVC framework
+
+## To-do
+
+* Add management accounts to create concerts
+
+* Style more of the view pages
+
+* Add search bars to the index pages
