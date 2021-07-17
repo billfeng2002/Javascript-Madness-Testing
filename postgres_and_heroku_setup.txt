@@ -1,0 +1,64 @@
+https://docs.google.com/document/d/1ozx2AhdGBUTYspvqEFFIvKJF3UkZDn5Qqf-y6ZRg12c/edit?usp=sharing
+COMPREHENSIVE STEPS
+sudo apt-get install wget ca-certificates
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+sudo apt-get update
+sudo apt-get install postgresql postgresql-contrib
+sudo apt-get install libpq-dev
+sudo service postgresql start
+gem install pg
+sudo -u postgres createuser --superuser MyLinuxUsername
+Add gem ‘pg’ to Gemfile and remove the sqlite3 gem
+
+edit the config/database.yml
+
+# SQLite. Versions 3.8.0 and up are supported.
+#  gem install sqlite3
+#
+#  Ensure the SQLite 3 gem is defined in your Gemfile
+#  gem 'sqlite3'
+#
+default: &default
+ adapter: postgresql
+ pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+ timeout: 5000
+development:
+ <<: *default
+ database: concearch_development
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+ <<: *default
+ database: concearch_test
+production:
+ <<: *default
+ database: concearch_production
+
+rails db:create
+rails db:migrate
+rails db:seed
+rails s → then test out the server is working
+Create a heroku.com account
+Install heroku: curl https://cli-assets.heroku.com/install.sh | sh
+In your project directory, run: heroku create
+sign in in the popup if necessary
+git push heroku main
+possible errors:
+https://stackoverflow.com/questions/4574176/heroku-push-rejected-failed-to-install-gems-via-bundler
+Make sure you’re not on a branch, or use a custom command the error points out
+git push heroku branch_name:main
+https://devcenter.heroku.com/articles/sqlite3
+heroku run rails db:migrate
+if you don’t do this and try to visit the page, there will be an error
+heroku run rails db:seed
+go to your heroku dashboard and find the application
+you can now visit it
+to rename
+heroku apps:rename new_name
+or change it on heroku website and fix remote origin of local repo
+to update
+git add .
+git commit -m “message”
+git push heroku main

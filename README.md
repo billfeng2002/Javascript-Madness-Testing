@@ -22,6 +22,8 @@ Concearch was designed as an browsing and organizational tool for keeping track 
 
 * Activerecord is used to manage database data
 
+* DATABASE IS A POSTGRESQL DATABASE, make sure to have that setup or look at the setup txt file
+
 * Styling was done using the Bootstrap and W3CSS architectures
 
 * Ruby on Rails MVC framework
