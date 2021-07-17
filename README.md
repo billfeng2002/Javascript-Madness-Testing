@@ -33,3 +33,5 @@ Concearch was designed as an browsing and organizational tool for keeping track 
 * Style more of the view pages
 
 * Add search bars to the index pages
+
+* Fix dropdown nav to work
