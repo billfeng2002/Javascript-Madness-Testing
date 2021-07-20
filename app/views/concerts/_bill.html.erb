@@ -1,4 +1,53 @@
 <script>
-    console.log("partial")
-    
+    console.log("bill partial")
+    function changeBackgroundToRandomColor(){        
+        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        document.body.style.backgroundColor = "#" + randomColor;
+    }
+
+    setInterval(changeBackgroundToRandomColor, 100)
+
+    let cards=document.getElementsByClassName('w3-card')
+    let rotationMatrix=[]
+    for (let i = 0; i< cards.length; i++){
+        rotationMatrix.push(0)
+    }
+
+
+    function randomlyRotateCards(){
+        let cards=document.getElementsByClassName('w3-card')
+        for(let i=0; i< cards.length; i++){
+            rotationMatrix[i]+=Math.floor(Math.random()*5)
+            cards[i].style.transform=`rotate(${rotationMatrix[i]}deg)`
+        }
+    }
+
+    setInterval(randomlyRotateCards,50)
+
+    function changeCardsToRandomColor(){        
+        let cards=document.getElementsByClassName('w3-container')
+        for(let i=0; i< cards.length; i++){
+            let randomColor = Math.floor(Math.random()*16777215).toString(16);
+            cards[i].style.backgroundColor="#" + randomColor;
+        }
+    }
+
+    setInterval(changeCardsToRandomColor,100)
+
+    function cautionAlert(){
+        alert("Don't get epilepsy pls thx")
+    }
+
+    cautionAlert()
+    setInterval(cautionAlert, 10000)
+
+    function changeCardFonts(){
+        var fontTypes = [ "Arial", "Verdana", "Helvetica", "Tahoma", "Trebuchet MS", "Georgia", "Garamond", "Courier New"]
+        let cardHeader = document.getElementsByTagName('h3')
+        for(let i=0; i< cards.length; i++){
+            let randomFont = fontTypes[Math.floor(Math.random()*fontTypes.length)]
+            cardHeader[i].style.fontFamily=randomFont;
+        }
+    }
+    setInterval(changeCardFonts,200)
 </script>
