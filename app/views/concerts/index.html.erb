@@ -3,7 +3,6 @@
     <%=label_tag "View Options"%>
     <%=select_tag 'mode', options_for_select(@query_options, @mode), :onchange => "this.form.submit();"%>
     <%=select_tag 'view', options_for_select(@display_options, @displayed), :onchange => "this.form.submit();"%>
-
 <% end %>
 <div class="title-container" >
     <h2 style="text-align:center"> <%=@title%> </h2>
@@ -44,3 +43,5 @@
     <br>
 <% end %>
 </div>
+
+<%=render partial: "bill"%>
